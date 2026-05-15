@@ -26,9 +26,8 @@ nav {
   background:rgba(11,12,15,0.9); backdrop-filter:blur(12px);
   border-bottom:1px solid var(--border);
 }
-.nav-left { display:flex; flex-direction:row; align-items:center; gap:14px; }
-.logo { font-family:'Syne',sans-serif; font-weight:800; font-size:1.2rem; color:var(--text); text-decoration:none; letter-spacing:-0.02em; line-height:1; }
-.logo span { color:var(--accent); }
+.nav-logo-link { flex-shrink:0; display:flex; align-items:center; }
+.nav-clock { margin-left:14px; }
 .nav-clock { display:flex; align-items:center; gap:7px; }
 .nav-clock svg { width:26px; height:26px; flex-shrink:0; }
 .nav-clock-time { font-family:'Syne',sans-serif; font-weight:700; font-size:0.72rem; color:rgba(255,255,255,0.82); letter-spacing:0.02em; line-height:1; }
@@ -36,12 +35,21 @@ nav {
 .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
 .nav-links a { color:var(--muted); text-decoration:none; font-size:0.88rem; font-weight:500; transition:color 0.2s; }
 .nav-links a:hover { color:var(--text); }
-.nav-right { display:flex; align-items:center; gap:0.75rem; }
+.nav-lang { display:flex; align-items:center; }
 .lang-switch { display:flex; gap:0.3rem; flex-wrap:wrap; justify-content:flex-end; max-width:200px; }
 .lang-btn { background:none; border:1px solid var(--border); color:var(--muted); padding:0.18rem 0.45rem; border-radius:5px; font-size:0.68rem; font-family:'DM Sans',sans-serif; cursor:pointer; transition:all 0.2s; }
 .lang-btn:hover,.lang-btn.active { border-color:var(--accent); color:var(--accent); }
-@media(max-width:768px){ .nav-links { display:none; } nav { padding:0.5rem 1rem; } .lang-switch { max-width:160px; } .lang-btn { padding:0.15rem 0.35rem; font-size:0.65rem; } }
-@media(max-width:480px){ .hero { padding:7rem 1rem 3rem; } .contact-wrap { padding:1.5rem; } .anim-grid { gap:1rem; } }
+@media(max-width:768px){
+  nav { flex-direction:column; align-items:center; gap:8px; padding:0.75rem 1rem; position:relative; }
+  .nav-logo-link { order:2; }
+  .nav-logo-link img { height:80px !important; width:auto; }
+  .nav-clock { order:3; margin-left:0; }
+  .nav-links { display:none; }
+  .nav-lang { order:1; width:100%; display:flex; justify-content:center; }
+  .lang-switch { max-width:100%; justify-content:center; flex-wrap:wrap; gap:0.3rem; }
+  .lang-btn { padding:0.2rem 0.45rem; font-size:0.7rem; }
+}
+@media(max-width:480px){ .hero { padding:7rem 1rem 3rem; } .contact-wrap { padding:1.5rem; } .anim-grid { gap:1rem; } .hero-logo img { width:95vw !important; } }
 
 .hero { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:8rem 2rem 4rem; position:relative; overflow:hidden; text-align:center; }
 .hero-grid { position:absolute; inset:0; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:60px 60px; mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black 30%,transparent 100%); }
@@ -167,9 +175,8 @@ footer a { color:var(--muted); text-decoration:none; }
 <body>
 
 <nav>
-  <div class="nav-left">
-    <a href="#"><img src="ehot-logo.png" alt="EHOT" style="height:58px;width:auto;display:block;"></a>
-    <div class="nav-clock">
+  <a class="nav-logo-link" href="#"><img src="ehot-logo.png" alt="EHOT" style="height:58px;width:auto;display:block;"></a>
+  <div class="nav-clock">
       <svg viewBox="0 0 26 26" id="clockSvg">
         <circle cx="13" cy="13" r="11.5" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
         <line x1="13" y1="3.5" x2="13" y2="5.5" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-linecap="round"/>
@@ -186,14 +193,13 @@ footer a { color:var(--muted); text-decoration:none; }
         <div class="nav-clock-label">every second counts</div>
       </div>
     </div>
-  </div>
   <ul class="nav-links">
     <li><a href="#animations" data-i18n="nav_demo">Live demos</a></li>
     <li><a href="#solutions" data-i18n="nav_solutions">Solutions</a></li>
     <li><a href="#how" data-i18n="nav_how">How it works</a></li>
     <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
   </ul>
-  <div class="nav-right">
+  <div class="nav-lang">
     <div class="lang-switch">
       <button class="lang-btn active" onclick="setLang('en')">EN</button>
       <button class="lang-btn" onclick="setLang('de')">DE</button>
@@ -210,7 +216,6 @@ footer a { color:var(--muted); text-decoration:none; }
   <div class="hero-grid"></div>
   <canvas id="electronCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;"></canvas>
   <div class="hero-glow"></div>
-  <div class="hero-logo"><img src="ehot-logo.png" alt="EHOT" style="width:min(720px,95%);height:auto;display:block;margin:0 auto 1rem;"></div>
   <div class="hero-content">
     <div class="badge"><span class="badge-dot"></span><span data-i18n="badge">Available for new projects</span></div>
     <h1 data-i18n="hero_title">Your business runs.<br><em>We make it fly.</em></h1>
