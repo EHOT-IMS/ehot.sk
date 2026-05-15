@@ -27,6 +27,7 @@ nav {
   border-bottom:1px solid var(--border);
 }
 .nav-logo-link { flex-shrink:0; display:flex; align-items:center; }
+.nav-logo-link img { height:75px; width:auto; display:block; }
 .nav-clock { margin-left:14px; }
 .nav-clock { display:flex; align-items:center; gap:7px; }
 .nav-clock svg { width:26px; height:26px; flex-shrink:0; }
@@ -39,17 +40,27 @@ nav {
 .lang-switch { display:flex; gap:0.3rem; flex-wrap:wrap; justify-content:flex-end; max-width:200px; }
 .lang-btn { background:none; border:1px solid var(--border); color:var(--muted); padding:0.18rem 0.45rem; border-radius:5px; font-size:0.68rem; font-family:'DM Sans',sans-serif; cursor:pointer; transition:all 0.2s; }
 .lang-btn:hover,.lang-btn.active { border-color:var(--accent); color:var(--accent); }
+.lang-select-mobile { display:none; background:var(--bg2); border:1px solid var(--border); color:var(--text); border-radius:6px; padding:0.25rem 0.5rem; font-size:0.78rem; font-family:'DM Sans',sans-serif; cursor:pointer; outline:none; }
 @media(max-width:768px){
-  nav { flex-direction:column; align-items:center; gap:8px; padding:0.75rem 1rem; position:relative; }
-  .nav-logo-link { order:2; }
-  .nav-logo-link img { height:80px !important; width:auto; }
-  .nav-clock { order:3; margin-left:0; }
+  nav {
+    display:grid;
+    grid-template-areas:"clock lang" "logo logo";
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto auto;
+    padding:0.5rem 1rem;
+    position:relative;
+    gap:6px 0;
+    align-items:center;
+  }
+  .nav-logo-link { grid-area:logo; display:flex; justify-content:center; padding:4px 0; }
+  .nav-logo-link img { height:70px !important; width:auto; }
+  .nav-clock { grid-area:clock; margin-left:0; justify-content:flex-start; }
   .nav-links { display:none; }
-  .nav-lang { order:1; width:100%; display:flex; justify-content:center; }
-  .lang-switch { max-width:100%; justify-content:center; flex-wrap:wrap; gap:0.3rem; }
-  .lang-btn { padding:0.2rem 0.45rem; font-size:0.7rem; }
+  .nav-lang { grid-area:lang; display:flex; justify-content:flex-end; }
+  .lang-switch { display:none; }
+  .lang-select-mobile { display:flex !important; }
 }
-@media(max-width:480px){ .hero { padding:7rem 1rem 3rem; } .contact-wrap { padding:1.5rem; } .anim-grid { gap:1rem; } .hero-logo img { width:95vw !important; } }
+@media(max-width:480px){ .hero { padding:7rem 1rem 3rem; } .contact-wrap { padding:1.5rem; } .anim-grid { gap:1rem; } }
 
 .hero { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:8rem 2rem 4rem; position:relative; overflow:hidden; text-align:center; }
 .hero-grid { position:absolute; inset:0; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:60px 60px; mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black 30%,transparent 100%); }
@@ -209,6 +220,15 @@ footer a { color:var(--muted); text-decoration:none; }
       <button class="lang-btn" onclick="setLang('sk')">SK</button>
       <button class="lang-btn" onclick="setLang('ru')">RU</button>
     </div>
+    <select class="lang-select-mobile" onchange="setLang(this.value)">
+      <option value="en">EN</option>
+      <option value="de">DE</option>
+      <option value="fr">FR</option>
+      <option value="es">ES</option>
+      <option value="pl">PL</option>
+      <option value="sk">SK</option>
+      <option value="ru">RU</option>
+    </select>
   </div>
 </nav>
 
@@ -524,7 +544,10 @@ let currentLang='en';
 function setLang(lang){
   currentLang=lang;
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+  const activeBtn=document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`);
+  if(activeBtn)activeBtn.classList.add('active');
+  const sel=document.querySelector('.lang-select-mobile');
+  if(sel)sel.value=lang;
   const t=translations[lang];
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(t[k]!==undefined)el.innerHTML=t[k];});
   document.querySelectorAll('[data-placeholder-i18n]').forEach(el=>{const k=el.getAttribute('data-placeholder-i18n');if(t[k]!==undefined)el.placeholder=t[k];});
