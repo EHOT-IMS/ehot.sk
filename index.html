@@ -181,7 +181,10 @@ footer { border-top:1px solid var(--border); padding:2rem; text-align:center; co
 footer a { color:var(--muted); text-decoration:none; }
 
 /* MARQUEE - fixed bottom bar */
-.marquee-section { position:fixed; bottom:0; left:0; right:0; z-index:999; padding:0.5rem 0; border-top:1px solid var(--border); overflow:hidden; background:rgba(10,12,20,0.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); mask-image:linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%); -webkit-mask-image:linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%); }
+.marquee-section { position:fixed; bottom:0; left:0; right:0; z-index:999; padding:0.5rem 0; border-top:1px solid var(--border); overflow:hidden; background:rgba(10,12,20,0.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
+.marquee-section::before,.marquee-section::after { content:''; position:absolute; top:0; bottom:0; width:12%; z-index:2; pointer-events:none; }
+.marquee-section::before { left:0; background:linear-gradient(to right, rgba(10,12,20,0.95) 0%, transparent 100%); }
+.marquee-section::after { right:0; background:linear-gradient(to left, rgba(10,12,20,0.95) 0%, transparent 100%); }
 .marquee-label { display:none; }
 .marquee-track { display:flex; width:max-content; animation:none; }
 .marquee-track.ready { animation:marquee-scroll 28s linear infinite; }
@@ -639,7 +642,9 @@ function setLang(lang){
   document.querySelectorAll('[data-placeholder-i18n]').forEach(el=>{const k=el.getAttribute('data-placeholder-i18n');if(t[k]!==undefined)el.placeholder=t[k];});
 }
 </script>
-<!script src="//code.jivosite.com/widget/j8oeHXMXJt" async></script>
+<!-- JivoChat (временно отключён)
+<script src="//code.jivosite.com/widget/j8oeHXMXJt" async></script>
+-->
 
 </body>
 </html>
