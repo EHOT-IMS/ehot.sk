@@ -181,7 +181,7 @@ footer { border-top:1px solid var(--border); padding:2rem; text-align:center; co
 footer a { color:var(--muted); text-decoration:none; }
 
 /* MARQUEE - fixed bottom bar */
-.marquee-section { position:fixed; bottom:0; left:0; right:0; z-index:999; padding:0.5rem 0; border-top:1px solid var(--border); overflow:hidden; background:rgba(10,12,20,0.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
+.marquee-section { position:fixed; bottom:0; left:0; right:0; z-index:999; padding:0.5rem 0; border-top:1px solid var(--border); overflow:hidden; background:rgba(10,12,20,0.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); mask-image:linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%); -webkit-mask-image:linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%); }
 .marquee-label { display:none; }
 .marquee-track { display:flex; width:max-content; animation:none; }
 .marquee-track.ready { animation:marquee-scroll 28s linear infinite; }
@@ -493,8 +493,8 @@ new IntersectionObserver(entries=>entries.forEach((e,i)=>{
 );
 
 /* ─── TELEGRAM CONFIG ─── */
-const TG_TOKEN = 'YOUR_BOT_TOKEN';   // замени после создания бота
-const TG_CHAT  = 'YOUR_CHAT_ID';     // замени своим chat_id
+const TG_TOKEN = '8553365464:AAEjcpUi4XyAF1YlkDbv2HPglzJzPhbLCmk';   // замени после создания бота
+const TG_CHAT  = '6545214031';     // замени своим chat_id
 
 function handleForm(e){
   e.preventDefault();
