@@ -187,7 +187,7 @@ footer a { color:var(--muted); text-decoration:none; }
 .marquee-section::after { right:0; background:linear-gradient(to left, rgba(10,12,20,0.95) 0%, transparent 100%); }
 .marquee-label { display:none; }
 .marquee-track { display:flex; width:max-content; animation:none; }
-.marquee-track.ready { animation:marquee-scroll 100s linear infinite; }
+.marquee-track.ready { animation:marquee-scroll 28s linear infinite; }
 .marquee-track:hover { animation-play-state:paused; }
 .marquee-item { flex-shrink:0; height:32px; margin:0 2.5rem; display:flex; align-items:center; }
 .marquee-item img { height:100%; width:auto; max-width:110px; object-fit:contain; filter:grayscale(1) brightness(0.6); opacity:0.7; transition:filter 0.3s,opacity 0.3s; }
@@ -417,13 +417,13 @@ footer { margin-bottom:48px; }
         <div class="contact-item-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#25D366"/><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#fff"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.417A9.953 9.953 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" fill="none" stroke="#25D366" stroke-width="0"/></svg>
         </div>
-        <div class="contact-item-text"><a href="https://wa.me/421915486560">WhatsApp</a></div>
+        <div class="contact-item-text"><a href="https://wa.me/421915486560">WhatsApp: +421 915 486 560</a></div>
       </div>
       <div class="contact-item">
         <div class="contact-item-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#229ED9"/><path d="M5.5 11.9c3.3-1.44 5.5-2.39 6.67-2.86 3.18-1.32 3.84-1.55 4.27-1.56.09 0 .3.02.43.14.11.1.14.23.16.33.01.1.03.3.01.46-.18 1.9-1 6.5-1.41 8.63-.17.9-.52 1.2-.85 1.23-.72.07-1.27-.48-1.97-.94-.97-.64-1.75-1.16-2.48-1.54-.83-.44-.78-1.02.03-1.65.24-.19 4.36-4.01 4.44-4.35.01-.04.02-.19-.07-.27-.09-.08-.22-.05-.31-.03-.14.03-2.3 1.46-6.5 4.29-.61.42-1.17.63-1.67.62-.55-.01-1.6-.31-2.38-.57-.96-.32-1.72-.49-1.65-1.03.03-.28.42-.57 1.15-.87z" fill="#fff"/></svg>
         </div>
-        <div class="contact-item-text"><a href="https://t.me/+421915486560">Telegram</a></div>
+        <div class="contact-item-text"><a href="https://t.me/+421915486560">Telegram: +421 915 486 560</a></div>
       </div>
       <div class="contact-item"><div class="contact-item-icon">📞</div><div class="contact-item-text"><a href="tel:+421915486560">+421 915 486 560</a></div></div>
       <div class="contact-item"><div class="contact-item-icon">🌍</div><div class="contact-item-text" data-i18n="con_location">Slovakia · EU · Remote worldwide</div></div>
@@ -647,9 +647,8 @@ function setLang(lang){
   document.querySelectorAll('[data-placeholder-i18n]').forEach(el=>{const k=el.getAttribute('data-placeholder-i18n');if(t[k]!==undefined)el.placeholder=t[k];});
 }
 </script>
-<!-- JivoChat (временно отключён)
+<!-- JivoChat отключён
 <script src="//code.jivosite.com/widget/j8oeHXMXJt" async></script>
 -->
-
 </body>
 </html>
